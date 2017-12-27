@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Idea } from '../models/idea';
 
 
@@ -8,9 +9,9 @@ import { Idea } from '../models/idea';
   styleUrls: ['./ideas-list.component.css']
 })
 export class IdeasListComponent implements OnInit {
-  
+  val : number;
   ideas : Idea[];
-
+  myIdea : Idea;
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +23,10 @@ export class IdeasListComponent implements OnInit {
       { id : 3, name : "Sport pour tous!", description : "Offre de services de mises en conditions physique et de Gym à domicile pour se maintenir en bonne santé.",
       followers : 10, category : "SPORT" }
     ]
+  }
+  increment(vals:number){
+    this.myIdea = this.ideas.get('vals');
+     console.log(vals);
   }
 
 }
