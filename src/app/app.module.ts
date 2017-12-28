@@ -1,13 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { RouterModule, Routes  } from '@angular/router';
+ 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AsideComponent } from './aside/aside.component';
 import { FooterComponent } from './footer/footer.component';
 import { IdeasListComponent } from './ideas-list/ideas-list.component';
+import { ContactComponent } from './contact/contact.component';
+import { IdeaDetailsComponent } from './idea-details/idea-details.component';
+import { IdeaDetailComponent } from './ideas-list/idea-detail/idea-detail.component';
 
+const routes : Routes = [
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: IdeasListComponent },
+  {path: 'detail', component: IdeaDetailComponent },
+  {path: 'details', component: IdeaDetailsComponent },
+  {path: 'contact', component: ContactComponent },
+  {path: '**', component: IdeasListComponent }
+];
 
 @NgModule({
   declarations: [
@@ -15,12 +26,16 @@ import { IdeasListComponent } from './ideas-list/ideas-list.component';
     HeaderComponent,
     AsideComponent,
     FooterComponent,
-    IdeasListComponent
+    IdeasListComponent,
+    ContactComponent,
+    IdeaDetailsComponent,
+    IdeaDetailComponent
   ],
   imports: [
-    BrowserModule
-  ],
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ], 
   providers: [],
-  bootstrap: [AppComponent]
-})
+  bootstrap: [AppComponent] 
+}) 
 export class AppModule { }

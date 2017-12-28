@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Idea } from '../models/idea';
 
@@ -9,11 +9,14 @@ import { Idea } from '../models/idea';
   styleUrls: ['./ideas-list.component.css']
 })
 export class IdeasListComponent implements OnInit {
-  val : number;
+  
+  @Output() selectedId = new EventEmitter<Idea>();
   ideas : Idea[];
-  myIdea : Idea;
+  followers : number;
+  liked = false;
+  selectedIdea : any;   
   constructor() { }
-
+  
   ngOnInit() {
    this.ideas = [ 
       {id : 1, name : "Adoyo Pour Tous", description : "Entreprise de préparation de Adoyo au citronel sans sucre. Contenant du miel et thérapeutique",
@@ -24,9 +27,21 @@ export class IdeasListComponent implements OnInit {
       followers : 10, category : "SPORT" }
     ]
   }
-  increment(vals:number){
-    this.myIdea = this.ideas.get('vals');
-     console.log(vals);
+  increment(idea: Idea){
+   // this.myIdea = this.ideas[vals -1];
+    this.followers = idea.followers++; 
+     this.selectedIdea = idea;
+     console.log(this.selectedIdea);
   }
+  decrement(idea: Idea){ 
+    this.followers = idea.followers--; 
+    this.selectedIdea= idea;
+  }
+  ideaSelected(idea : Idea) {
+    this.selectedId.emit(idea);
+    console.log(this.selectedId);
+    console.log(idea);
+
+  } 
 
 }

@@ -1,3 +1,4 @@
-.main-content{
-    min-height: 600px;
-}
+.hideD,
+.hideG {
+    display: none;
+} 

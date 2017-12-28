@@ -1,28 +1,30 @@
+<app-header></app-header>
+
 <div class="main-content">
   <div class="container">
 
     <!-- Heading Row -->
-     
+    
     <br> <br> 
-
         <div class="row">
-
-          <div  *ngFor="let idea of ideas" class="col-md-4 mb-4">
+          <div *ngFor="let idea of ideas" class="col-md-4 mb-4">
             <div class="card h-100">
               <div class="card-head">
                 <span class="card-head-l">{{idea.category}}</span>
                 <span class="card-head-r">
-                  <a> {{idea.followers}}</a> <a   (click) = "increment(idea.id)"><i class="fa fa-thumbs-up"></i></a> <a><i class="fa fa-thumbs-down"></i></a></span>
+                  <a> {{idea.followers}}</a> <a (click) = "increment(idea)"><i class="fa fa-thumbs-up"></i></a>  <a [class.hideD] = "idea === selectedIdea" (click) = "decrement(idea)"><i class="fa fa-thumbs-down"></i></a></span>
               </div>
               <div class="card-body padding-top-0">
                 <h2 class="card-title">{{idea.name}}</h2>
-                <p class="card-text">{{idea.description}}</p>
+                <p class="card-text">{{idea.description}}</p> 
               </div>
-              <div class="card-footer">
-                <a href="#" class="btn btn-secondary">En savoir plus</a>
-              </div>
+              <div class="card-footer"> 
+                <a routerLink = "/details" (click) = "ideaSelected(idea)"  class="btn btn-secondary">En savoir plus</a>
+              </div> 
             </div>
-          </div>
-        </div>
+          </div> 
+        </div> 
   </div>
 </div>
+<app-idea-detail></app-idea-detail>
+<app-footer></app-footer>

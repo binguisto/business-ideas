@@ -62,3 +62,6 @@
     -o-background-size: cover;
     background-size: cover;
   }
+  .main-content{
+    min-height: 600px;
+  }
