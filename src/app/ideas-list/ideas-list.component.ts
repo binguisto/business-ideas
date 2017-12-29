@@ -10,10 +10,13 @@ import { Idea } from '../models/idea';
 })
 export class IdeasListComponent implements OnInit {
   
-  @Output() selectedId = new EventEmitter<Idea>();
+  
   ideas : Idea[];
   followers : number;
   liked = false;
+  status = true;
+
+  mySelectedIdea : Idea;   
   selectedIdea : any;   
   constructor() { }
   
@@ -30,7 +33,7 @@ export class IdeasListComponent implements OnInit {
   increment(idea: Idea){
    // this.myIdea = this.ideas[vals -1];
     this.followers = idea.followers++; 
-     this.selectedIdea = idea;
+    this.selectedIdea = idea;
      console.log(this.selectedIdea);
   }
   decrement(idea: Idea){ 
@@ -38,10 +41,13 @@ export class IdeasListComponent implements OnInit {
     this.selectedIdea= idea;
   }
   ideaSelected(idea : Idea) {
-    this.selectedId.emit(idea);
-    console.log(this.selectedId);
-    console.log(idea);
+    this.mySelectedIdea=idea;
+    this.status=false;    
+    console.log(this.mySelectedIdea);
+    return this.mySelectedIdea;
 
+    
+   
   } 
 
 }

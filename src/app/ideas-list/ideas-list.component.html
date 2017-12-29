@@ -1,11 +1,12 @@
 <app-header></app-header>
 
-<div class="main-content">
+<div class="main-content" *ngIf="status">
   <div class="container">
 
     <!-- Heading Row -->
     
     <br> <br> 
+    
         <div class="row">
           <div *ngFor="let idea of ideas" class="col-md-4 mb-4">
             <div class="card h-100">
@@ -19,12 +20,12 @@
                 <p class="card-text">{{idea.description}}</p> 
               </div>
               <div class="card-footer"> 
-                <a routerLink = "/details" (click) = "ideaSelected(idea)"  class="btn btn-secondary">En savoir plus</a>
+                <a  (click) = "ideaSelected(idea)"  class="btn btn-secondary">En savoir plus</a>
               </div> 
             </div>
           </div> 
         </div> 
   </div>
 </div>
-<app-idea-detail></app-idea-detail>
+<app-idea-detail *ngIf="!status" [idea]="mySelectedIdea"></app-idea-detail>
 <app-footer></app-footer>

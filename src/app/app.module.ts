@@ -8,14 +8,12 @@ import { AsideComponent } from './aside/aside.component';
 import { FooterComponent } from './footer/footer.component';
 import { IdeasListComponent } from './ideas-list/ideas-list.component';
 import { ContactComponent } from './contact/contact.component';
-import { IdeaDetailsComponent } from './idea-details/idea-details.component';
 import { IdeaDetailComponent } from './ideas-list/idea-detail/idea-detail.component';
 
 const routes : Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: IdeasListComponent },
   {path: 'detail', component: IdeaDetailComponent },
-  {path: 'details', component: IdeaDetailsComponent },
   {path: 'contact', component: ContactComponent },
   {path: '**', component: IdeasListComponent }
 ];
@@ -28,7 +26,6 @@ const routes : Routes = [
     FooterComponent,
     IdeasListComponent,
     ContactComponent,
-    IdeaDetailsComponent,
     IdeaDetailComponent
   ],
   imports: [
